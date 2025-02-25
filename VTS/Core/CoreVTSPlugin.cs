@@ -63,6 +63,7 @@ namespace VTS.Core {
 		public void Dispose() {
 			this.Logger.Log(string.Format("Disposing of VTS Plugin: {0}...", this.PluginName));
 			this._cancelToken.Cancel();
+			this.Socket.Dispose();
 		}
 
 		#region Initialization
