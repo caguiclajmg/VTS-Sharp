@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <ImplicitUsings>disable</ImplicitUsings>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageId>VTS-Sharp</PackageId>
         <Version>2.2.2</Version>
         <Title>VTS-Sharp</Title>
@@ -18,7 +18,9 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Copyright>Tom 'Skeletom' Farro</Copyright>
         <PackageTags>plugin csharp unity dotnet godot-engine vtuber vtube-studio</PackageTags>
-    </PropertyGroup>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+	</PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
