@@ -25,8 +25,8 @@ namespace VTS.Core {
 		public IVTSWebSocket Socket { get; private set; }
 
 		private readonly CancellationTokenSource _cancelToken;
-		private readonly Task _tickLoop = null;
 		private readonly int _tickInterval = 100;
+		private Task _tickLoop = null;
 
 
 		/// <summary>
@@ -50,7 +50,6 @@ namespace VTS.Core {
 			this.PluginIcon = pluginIcon;
 			this._cancelToken = new CancellationTokenSource();
 			this._tickInterval = updateIntervalMs;
-			this._tickLoop = TickLoop(this._cancelToken.Token);
 
 			if (pluginName.Length < 3 || pluginName.Length > 32 || pluginAuthor.Length < 3 || pluginAuthor.Length > 32)
 				throw new Exception("Plugin name and plugin author must both be between 3 and 32 characters.");
@@ -68,6 +67,7 @@ namespace VTS.Core {
 		#region Initialization
 
 		public void Initialize(Action onConnect, Action onDisconnect, Action<VTSErrorData> onError) {
+			this._tickLoop = TickLoop(this._cancelToken.Token);
 			this.Socket.Initialize();
 			Action onCombinedConnect = () => {
 				this.Socket.ResubscribeToEvents();
