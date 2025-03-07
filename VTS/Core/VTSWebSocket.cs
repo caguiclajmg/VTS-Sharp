@@ -117,7 +117,7 @@ namespace VTS.Core {
 						}
 
 						if (data.data.active) {
-							GLOBAL_PORT_DISCOVERY_EVENT.Invoke(address, data.data.port);
+							GLOBAL_PORT_DISCOVERY_EVENT?.Invoke(address, data.data.port);
 						}
 					}
 				}
